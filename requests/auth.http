@@ -1,0 +1,15 @@
+### auth register
+post http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+
+}
+
+### auth login
+post http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+
+}
