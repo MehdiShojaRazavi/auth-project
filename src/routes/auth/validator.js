@@ -7,7 +7,7 @@ module.exports = new class{
       check('email')
         .isEmail()
         .withMessage('email is invalid'),
-      check('fname')
+      check('name')
         .not()
         .isEmpty()
         .withMessage('name cant be empty'),
