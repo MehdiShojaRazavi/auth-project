@@ -7,13 +7,21 @@ async function isLoggined(req, res, next){
   try{
     const decoded = jwt.verify(token, process.env.jwt_key);
     const user = await User.findById(decoded._id);
-    console.log(user);
     req.user = user;
     next();
   }catch(ex){
     res.status(400).send('invalid token');
   }
 }
+
+async function isAdmin(req, res, next){
+  try{
+    if(!req.user.isadmin) throw {status: 403, message: 'access denied'}; // res.status(403).send('access denied');
+    next();
+  }catch(error){
+    next(error)
+  }
+}
 module.exports = {
-  isLoggined
+  isLoggined, isAdmin
 }

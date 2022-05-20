@@ -22,3 +22,7 @@ app.use('/api', router);
 const port = process.env.PORT || 3000;
 app.listen(port, ()=> console.log(`listening on port ${port}`));
 
+app.use((error, req, res, next) => {
+  console.log(error)
+  if(error) return res.status(error?.status || 500).send(error?.message || 'internal srver error');
+})
