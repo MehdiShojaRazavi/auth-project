@@ -20,7 +20,7 @@ module.exports = new (class extends controller{
     await user.save();
 
     this.response({
-      res, message: 'the user success fully regestered',
+      res, message: 'the user successfuly regestered',
       data: {email, name, password}
     })
   }
@@ -33,7 +33,7 @@ module.exports = new (class extends controller{
       });
     }
     const isValid = await bcrypt.compareSync(req.body.password, user.password);
-    if(!isValid){
+    if(isValid){
       return this.response({
         res, code: 401, message: 'invalid email or password'
       });
